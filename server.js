@@ -14,9 +14,12 @@ app.use('/api/thoughts/', require('./server/routes/thoughts-route'));
 
 // the asterisk is very important!! as it allows client side routing
 // with react-router or w/e client side routing package you use
-app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: __dirname + '/client/build/' });
+// app.get('/*', (req, res) => {
+//   res.sendFile('index.html', { root: __dirname + '/client/build/' });
+// });
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build",     
+  "index.html"));
 });
-
 const { PORT } = process.env;
 app.listen(PORT, () => console.log(`Wizardry happening on port ${PORT}`));
